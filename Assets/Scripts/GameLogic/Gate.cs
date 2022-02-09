@@ -1,3 +1,4 @@
+using CodeBase.Architecture;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -5,7 +6,7 @@ namespace CodeBase
 {
     public class Gate : MonoBehaviour
     {
-        [SerializeField] private Creature _creatureWhoScore;
+        [SerializeField] private GameEvent _scoreGoal;
         private void OnTriggerEnter(Collider other)
         {
             ScoreGoal();
@@ -13,7 +14,7 @@ namespace CodeBase
 
         private void ScoreGoal()
         {
-           GameManager.Instance.ToScoreGoal(_creatureWhoScore);
+            _scoreGoal.Invoke();
         }
     }
 }

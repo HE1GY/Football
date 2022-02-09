@@ -1,4 +1,5 @@
 using System;
+using CodeBase.GameLogic.Ball;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -6,21 +7,12 @@ namespace CodeBase.AI
 {
     public class EnemyMove : CreatureMove
     {
-        private const int NumberWhenMiss=1;
-        
         [SerializeField] private BallMovement _ballMovement;
-        [SerializeField] private float _nearDistance;
-
 
         private void Update()
         {
             if (_ballMovement.Direction.x > 0)
             {
-                var distanceBetween = Vector3.Distance(_ballMovement.transform.position, transform.position);
-                if (distanceBetween < _nearDistance/*&&NumberWheneMiss==Random.Range(1,10)*/)
-                {
-                    Miss();
-                }
                 Defence();
             }
             
